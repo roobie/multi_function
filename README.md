@@ -8,7 +8,7 @@ An implementation that enables defining functions that apply dynamic multiple di
 
 Dispatching on type
 
-```
+```javascript
 function Animal(n) { this.name = n; }
 Animal.prototype.toString = function () {
   return this.name;
@@ -52,7 +52,7 @@ t.throws(() => {
 
 Dispatching on value
 
-```
+```javascript
 
 const mm = MultiFunction()
         .params() 
@@ -69,13 +69,16 @@ t.equal(mm(null), 'null');
 
 Dynamic binding
 
-```
+```javascript
 const name = 'FancyPantz';
 const d = new Dog(name);
 
 // override the Animal's toString()
 d.toString = MultiFunction()
   .params()
+  // the functions passed that uses `this` must be
+  // "real" functions, so that the context can be
+  // dynamic (arrow funcs don't allow changing context)
   .fn(function () {
     return this.name;
   })

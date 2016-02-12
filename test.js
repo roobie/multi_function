@@ -74,7 +74,7 @@ function run(MultiFunction) {
   });
 
   test('Dynamic context.', t => {
-    t.plan(3);
+    t.plan(4);
 
     const name = 'FancyPantz';
     const d = new Dog(name);
@@ -97,6 +97,10 @@ function run(MultiFunction) {
     t.equal(d.toString(), name);
     t.equal(d.toString('Hello'), 'Hello, ' + name);
     t.equal(d.toString(''), 'Hi, ' + name);
+
+    t.throws(() => {
+      d.toString('', new Dog);
+    }, /no match found/i, 'should throw');
   });
 }
 

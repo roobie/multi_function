@@ -1,0 +1,22 @@
+{
+  "name": "multi_function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "multi_function.js",
+  "scripts": {
+    "build": "babel multi_function.js | umd -c multi-function > multi_function.umd.js",
+    "pretest": "npm run build",
+    "test": "tape test.js | faucet",
+    "prepublish": "npm test && pakmanager -e node deps",
+    "publish": "npm publish ./"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "faucet": "0.0.1",
+    "tape": "^4.4.0",
+    "umd": "^3.0.1"
+  }
+}

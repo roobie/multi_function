@@ -1,4 +1,4 @@
-# multi_function
+# MultiFunction
 An implementation that enables defining functions that apply dynamic multiple dispatch
 
 `"Better than a switch" - BR`
